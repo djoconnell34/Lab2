@@ -95,15 +95,24 @@ namespace Lab2
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("The Class you entered is not in the List, please choose from below");
-                        foreach (var x in Program.classes)
+                        Console.Write("\nThe Class you entered is not in the List, do you still want to Delete a Class (Y / N): \n");
+                        char userInput = Convert.ToChar(Console.ReadLine());
+                        if (userInput == 'N')
                         {
-                            Console.WriteLine("- " + x.className + "\n");
+                            break;
                         }
+                        else
+                        {
+                            foreach (var x in Program.classes)
+                            {
+                                Console.WriteLine("- " + x.className);
+                            }
+                        }
+                        
                     }
                 }
                 
-                counter = 0;
+                
             }
 
         }

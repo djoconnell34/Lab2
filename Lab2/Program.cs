@@ -19,40 +19,53 @@ namespace Lab2
             {
                 int quit = 0;
                 Console.WriteLine("Welcome to the Academy");
+                
                 while (quit == 0)
                 {
+                    
                     Console.WriteLine("What Action would you like to Take?");
                     Console.WriteLine("A:  See all Classes\nB:  Add a Class\nC:  Delete a Class\nD:  Class Information\nQ:  Exit the App");
-                    char action3 = Char.Parse(Console.ReadLine());
-                    string action3a = action3.ToString();
+                    string action3 = Console.ReadLine();
                     //See if user entered the right input - A,B,C,D,Q
-                    while (true)
+                    int action3b = 0;
+                    while (action3b == 0)
                     {
-                        if (action3 == 'A' || action3 == 'B' || action3 == 'C' || action3 == 'D' || action3 == 'Q' || action3a.Length == 1)
+                        
+                        try
                         {
-                            break;
+                            if (action3 == "A" || action3 == "B" || action3 == "C" || action3 == "D" || action3 == "Q" || action3.Length == 1)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                throw new Exception();
+                            }
                         }
-                        else
-                        Console.Clear();
-                        Console.WriteLine("Please only choose from the following:");
-                        Console.WriteLine("A:  See all Classes\nB:  Add a Class\nC:  Delete a Class\nD:  Class Information\nQ:  Exit the App");
-                        action3 = Char.Parse(Console.ReadLine());
-                        action3a = action3.ToString();
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            Console.Clear();
+                            Console.WriteLine("Please only choose from the following:");
+                        }
+                        action3b++;
+                       
                     }
 
                     //switch to what user info he/she wants
                     switch (action3)
                     {
-                        case 'A':
+                        case "A":
                             Classroom.showClasses(); //Method in Classroom Class that prints each Class
                             break;
-                        case 'B':
+                        case "B":
                             Classroom.addClass(); //Method in Classroom Class that lets user add a Class (only with letters)
                             break;
-                        case 'C':
+                        case "C":
                             Classroom.delClass(); //Method in Classroom Class that lets user delete a Class
                             break;
-                        case 'D':
+                        case "D":
                             {
                                 int counter2 = 0;
                                 Console.Clear();
@@ -70,12 +83,11 @@ namespace Lab2
                                     Console.WriteLine("What Action would you like to Take?");
                                     Console.WriteLine("A:  See All Grades\nB:  Add a Student\nC:  Enter the Student's Info \nD:  Compare two studentes" +
                                    "\nE:  Show the top Grade\nF:  Show the bottom Grade\nG;  Calculate Avg of the Class\nH:  Remove a Student\nQ:  Back to Main Menu");
-                                    char action = Char.Parse(Console.ReadLine());
-                                    string actionA = action.ToString();
+                                    string action = Console.ReadLine();
                                      while (true)//Make sure user enters correct 
                                      {
-                                            if (action == 'A' || action == 'B' || action == 'C' || action == 'D' || action == 'E' || action == 'F' || action == 'G' ||
-                                               action == 'H' || action == 'Q' || actionA.Length == 1)
+                                            if (action == "A" || action == "B" || action == "C" || action == "D" || action == "E" || action == "F" || 
+                                            action == "G" || action == "H" || action == "Q" || action.Length == 1)
                                             {
                                                 break;
                                             }
@@ -84,35 +96,33 @@ namespace Lab2
                                                 Console.Clear();
                                                 Console.WriteLine("A:  See All Grades\nB:  Add a Student\nC:  Enter the Student's Info \nD:  Compare two studentes" +
                                                 "\nE:  Show the top Grade\nF:  Show the bottom Grade\nG;  Calculate Avg of the Class\nH:  Remove a Student\nQ:  Back to Main Menu");
-                                                action = Char.Parse(Console.ReadLine());
-                                                actionA = action.ToString();
+                                                action = Console.ReadLine();
 
                                             }
                                      }
 
                                     switch (action)
                                     {
-                                        case 'A':
+                                        case "A":
                                             Student.showStds(); //Method in Student Class that will show all students within the selected Class
                                             break;
-                                        case 'B':
+                                        case "B":
                                             Student.addStd(); //Method in Student Class that will add a student
                                             break;
 
-                                        case 'C':
+                                        case "C":
                                             Student.editStd();
                                             int counter3 = 0;
                                             while (counter3 == 0)
                                             {
                                                 Console.WriteLine("A:  See All Grades\nB:  Add an Assignment\nC:  Add an Assignment Grade\nD:  Remove a Assignment " +
                                                 "\nQ:  Back to Main Menu ");
-                                                char action2 = Char.Parse(Console.ReadLine());
-                                                string action2a = action2.ToString();
+                                                string action2 = Console.ReadLine();
                                                 //See if user entered the right input A,B,C,D,Q
                                                 while (true)
                                                 {
-                                                    if (action2 == 'A' || action2 == 'B' || action2 == 'C' || action2 == 'D' || action2 == 'Q' 
-                                                        || action2a.Length == 1)
+                                                    if (action2 == "A" || action2 == "B" || action2 == "C" || action2 == "D" || action2 == "Q" 
+                                                        || action2.Length == 1)
                                                     {
                                                         break;
                                                     }
@@ -121,25 +131,25 @@ namespace Lab2
                                                         Console.Clear();
                                                         Console.WriteLine("A:  See All Grades\nB:  Add an Assignment\nC:  Add an Assignment Grade\nD:  Remove a Assignment " +
                                                        "\nQ:  Back to Main Menu ");
-                                                        action2 = Char.Parse(Console.ReadLine());
-                                                        action2a = action2.ToString();
+                                                        action2 = Console.ReadLine();
+                                                        
                                                     }
                                                 }
                                                 switch (action2)
                                                 {
-                                                    case 'A':
+                                                    case "A":
                                                         Assignment.allAssigns();
                                                         break;
-                                                    case 'B':
+                                                    case "B":
                                                         Assignment.newAssign();
                                                         break;
-                                                    case 'C':
+                                                    case "C":
                                                         Assignment.editAssign();
                                                         break;
-                                                    case 'D':
+                                                    case "D":
                                                        Assignment.delAssign();
                                                         break;
-                                                    case 'Q':
+                                                    case "Q":
                                                         Console.Clear();
                                                         counter3 = 1;
                                                         break;
@@ -147,23 +157,22 @@ namespace Lab2
                                             }
                                             break;
 
-                                        case 'D':
+                                        case "D":
                                             Student.compareStd();
-                                            
                                             break;
-                                        case 'E':
+                                        case "E":
                                         Student.topStd();
                                         break;
-                                        case 'F':
+                                        case "F":
                                         Student.lowStd();
                                         break;
-                                        case 'G':
+                                        case "G":
                                         Student.avgClass();
                                         break;
-                                        case 'H':
+                                        case "H":
                                         Student.delStd();
                                         break;
-                                        case 'Q':
+                                        case "Q":
                                             Console.Clear();
                                             counter2 = 1;
                                             break;
@@ -173,7 +182,7 @@ namespace Lab2
                                 }
                                 break;
                             }
-                        case 'Q':
+                        case "Q":
                             quit = 1;
                             break;
                     }
