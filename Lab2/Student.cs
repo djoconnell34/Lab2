@@ -55,17 +55,76 @@ namespace Lab2
             Console.Clear();
             Console.Write("Which Student do you want to Edit: ");
             string editStd = Console.ReadLine();
+            while (true)
+            {
+                if (Program.tempClass.studentList.Any(x => x.name == editStd) == true)
+                {
+                    Console.Clear();
+                    break;
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine($"{editStd} is not in this Class, please pick from below: ");
+                    foreach (var x in Program.tempClass.studentList)
+                    {
+                        Console.WriteLine("- " + x.name);
+                    }
+                    Console.Write("Which Student do you want to Edit: ");
+                    editStd = Console.ReadLine();
+                }
+            }
             Program.tempStudent = Program.tempClass.studentList.FirstOrDefault(x => x.name == editStd); //Make a Student Object for the student you want to edit/Add Assignments
-            Console.WriteLine();
+
         }
         public static void compareStd()
         {
             Console.Clear();
             Console.Write("Who is the first student: ");
             var firstName = Console.ReadLine();
+            
+            while (true)
+            {
+                if (Program.tempClass.studentList.Any(x => x.name == firstName) == true)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine($"{firstName} is not in {Program.tempClass.className}, Please pick a Student from Below");
+                    foreach (var x in Program.tempClass.studentList)
+                    {
+                        Console.WriteLine("- " + x.name);
+                    }
+                }
+                Console.Write("Who is the first student: ");
+                firstName = Console.ReadLine();
+            }
             Console.Write("Who is the second student: ");
             string secName = Console.ReadLine();
+            while (true)
+            {
+                if (Program.tempClass.studentList.Any(x => x.name == secName) == true)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine($"{secName} is not in {Program.tempClass.className}");
+                    foreach (var x in Program.tempClass.studentList)
+                    {
+                        Console.WriteLine("- " + x.name);
+                    }
+                }
+                Console.Write("Who is the first student: ");
+                secName = Console.ReadLine();
+            }
 
+            Console.Clear();
 
             var avg1 = 0;
             Program.tempStudent = Program.tempClass.studentList.FirstOrDefault(x => x.name == firstName);

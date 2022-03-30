@@ -31,26 +31,19 @@ namespace Lab2
                     while (action3b == 0)
                     {
                         
-                        try
-                        {
-                            if (action3 == "A" || action3 == "B" || action3 == "C" || action3 == "D" || action3 == "Q" || action3.Length == 1)
+                            if (action3 == "A" || action3 == "B" || action3 == "C" || action3 == "D" || action3 == "Q" && action3.Length == 1)
                             {
-                                break;
+                            break;
+
                             }
                             else
                             {
-                                Console.Clear();
-                                throw new Exception();
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.ToString());
                             Console.Clear();
                             Console.WriteLine("Please only choose from the following:");
+                            Console.WriteLine("A:  See all Classes\nB:  Add a Class\nC:  Delete a Class\nD:  Class Information\nQ:  Exit the App");
+                            action3 = Console.ReadLine();
                         }
-                        action3b++;
-                       
+
                     }
 
                     //switch to what user info he/she wants
@@ -67,39 +60,37 @@ namespace Lab2
                             break;
                         case "D":
                             {
+                                Classroom.pickClass();
+                               
                                 int counter2 = 0;
+
+                                
                                 Console.Clear();
-                                Console.Write("Which Class Information do you want to see: \n");
-                                foreach (var x in classes)
-                                {
-                                    Console.WriteLine("- " + x.className);
-                                }
-                                string className2 = Console.ReadLine();
-                                tempClass = classes.FirstOrDefault(x => x.className == className2);//Create an Object of the School Class(ie Math) that you will add students and Assignments
-                                Console.Clear();
-                                Console.WriteLine($"Welcome to the {tempClass.className} Class App");
+                                Console.Write($"Welcome to the {tempClass.className} Class App");
                                 while (counter2 == 0)
                                 {
                                     Console.WriteLine("What Action would you like to Take?");
                                     Console.WriteLine("A:  See All Grades\nB:  Add a Student\nC:  Enter the Student's Info \nD:  Compare two studentes" +
                                    "\nE:  Show the top Grade\nF:  Show the bottom Grade\nG;  Calculate Avg of the Class\nH:  Remove a Student\nQ:  Back to Main Menu");
                                     string action = Console.ReadLine();
-                                     while (true)//Make sure user enters correct 
-                                     {
-                                            if (action == "A" || action == "B" || action == "C" || action == "D" || action == "E" || action == "F" || 
-                                            action == "G" || action == "H" || action == "Q" || action.Length == 1)
-                                            {
-                                                break;
-                                            }
-                                            else
-                                            {
-                                                Console.Clear();
-                                                Console.WriteLine("A:  See All Grades\nB:  Add a Student\nC:  Enter the Student's Info \nD:  Compare two studentes" +
-                                                "\nE:  Show the top Grade\nF:  Show the bottom Grade\nG;  Calculate Avg of the Class\nH:  Remove a Student\nQ:  Back to Main Menu");
-                                                action = Console.ReadLine();
+                                    
+                                    int counter2a = 0;
+                                    while (counter2a == 0)//Make sure user enters correct 
+                                    {
+                                        if (action == "A" || action == "B" || action == "C" || action == "D" || action == "E" || action == "F" || 
+                                        action == "G" || action == "H" || action == "Q" && action.Length == 1)
+                                        {
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("A:  See All Grades\nB:  Add a Student\nC:  Enter the Student's Info \nD:  Compare two studentes" +
+                                            "\nE:  Show the top Grade\nF:  Show the bottom Grade\nG:  Calculate Avg of the Class\nH:  Remove a Student\nQ:  Back to Main Menu");
+                                            action = Console.ReadLine();
 
-                                            }
-                                     }
+                                        }
+                                    }
 
                                     switch (action)
                                     {
@@ -129,6 +120,7 @@ namespace Lab2
                                                     else
                                                     {
                                                         Console.Clear();
+                                                        Console.WriteLine("Please only Chose from the Following:");
                                                         Console.WriteLine("A:  See All Grades\nB:  Add an Assignment\nC:  Add an Assignment Grade\nD:  Remove a Assignment " +
                                                        "\nQ:  Back to Main Menu ");
                                                         action2 = Console.ReadLine();
