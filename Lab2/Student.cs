@@ -53,29 +53,42 @@ namespace Lab2
         public static void editStd()
         {
             Console.Clear();
-            Console.Write("Which Student do you want to Edit: ");
-            string editStd = Console.ReadLine();
+
             while (true)
             {
-                if (Program.tempClass.studentList.Any(x => x.name == editStd) == true)
+                if (Program.tempClass.studentList.Count != 0)
                 {
-                    Console.Clear();
+                    Console.Write("Which Student do you want to Edit: ");
+                    string editStd = Console.ReadLine();
+                    while (true)
+                    {
+                        if (Program.tempClass.studentList.Any(x => x.name == editStd) == true)
+                        {
+                            Console.Clear();
+                            break;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"{editStd} is not in this Class, please pick from below: ");
+                            foreach (var x in Program.tempClass.studentList)
+                            {
+                                Console.WriteLine("- " + x.name);
+                            }
+                            Console.Write("Which Student do you want to Edit: ");
+                            editStd = Console.ReadLine();
+                        }
+                    }
+                    Program.tempStudent = Program.tempClass.studentList.FirstOrDefault(x => x.name == editStd); //Make a Student Object for the student you want to edit/Add Assignments
                     break;
                 }
                 else
                 {
-                    Console.Clear();
-                    Console.WriteLine($"{editStd} is not in this Class, please pick from below: ");
-                    foreach (var x in Program.tempClass.studentList)
-                    {
-                        Console.WriteLine("- " + x.name);
-                    }
-                    Console.Write("Which Student do you want to Edit: ");
-                    editStd = Console.ReadLine();
+                    Console.Write("There are no Students to Edit, press any key to add a Student and Then Edit him/her");
+                    String anyKey = Console.ReadLine();
+                    addStd();
                 }
             }
-            Program.tempStudent = Program.tempClass.studentList.FirstOrDefault(x => x.name == editStd); //Make a Student Object for the student you want to edit/Add Assignments
-
         }
         public static void compareStd()
         {

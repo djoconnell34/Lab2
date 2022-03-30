@@ -104,6 +104,7 @@ namespace Lab2
                         }
                         else
                         {
+                            Console.Clear();
                             Console.WriteLine("Choose from the following Syllabus: ");
                             foreach (var x in Program.classes)
                             {
@@ -115,41 +116,60 @@ namespace Lab2
                 }
             }
         }
-        public static void pickClass() //Lets the User Delete a Class
+        public static void pickClass() //Lets the User edit the students and grades in specific Class
         {
             Console.Clear();
-            int counter = 0;
-            Console.WriteLine("Which Class do you want to Edit?");
-            foreach (var x in Program.classes)
+
+            while (true)
             {
-                Console.WriteLine("- " + x.className);
-            }
-            Console.Write("Which Class Information do you want to see: \n");
-            string className2 = Console.ReadLine();
-            while (counter == 0)
-            {
-                    try
+                if (Program.classes.Count != 0)
+                {
+                    int counter = 0;
+                    Console.WriteLine("Which Class do you want to Edit?");
+                    foreach (var x in Program.classes)
                     {
-                        if (Program.classes.Any(x => x.className == className2))
-                        {
-                            break;
-                        }
-                        else throw new Exception();
+                        Console.WriteLine("- " + x.className);
                     }
-                    catch (Exception ex)
+                    Console.Write("Which Class Information do you want to see: \n");
+                    string className2 = Console.ReadLine();
+
+                    while (counter == 0)
                     {
-                        Console.Clear();
-                        Console.WriteLine("Please only Select from the following Classes:");
-                        foreach (var x in Program.classes)
+                        try
                         {
-                            Console.WriteLine("- " + x.className);
+                            if (Program.classes.Any(x => x.className == className2))
+                            {
+                                break;
+                            }
+                            else throw new Exception();
                         }
-                        Console.Write("Which Class Information do you want to see: \n");
-                        className2 = Console.ReadLine();
+                        catch (Exception ex)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Please only Select from the following Classes:");
+                            foreach (var x in Program.classes)
+                            {
+                                Console.WriteLine("- " + x.className);
+                            }
+                            Console.Write("Which Class Information do you want to see: ");
+                            className2 = Console.ReadLine();
+
+                        }
+                    }
+                    Program.tempClass = Program.classes.FirstOrDefault(x => x.className == className2);//Create an Object of the School Class(ie Math) that you will add students and Assignments
+                    break;
+                }
+                else
+                {
+                    Console.Write("There are no Classes to Edit, press any key to add a Class and Then Edit it");
+                    String anyKey = Console.ReadLine();
+                    addClass();
 
                 }
             }
-            Program.tempClass = Program.classes.FirstOrDefault(x => x.className == className2);//Create an Object of the School Class(ie Math) that you will add students and Assignments
+            
+
+
         }
     }
 

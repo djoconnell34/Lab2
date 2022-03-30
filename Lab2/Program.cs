@@ -66,12 +66,12 @@ namespace Lab2
 
                                 
                                 Console.Clear();
-                                Console.Write($"Welcome to the {tempClass.className} Class App");
+                                Console.WriteLine($"Welcome to the {tempClass.className} Class App");
                                 while (counter2 == 0)
                                 {
                                     Console.WriteLine("What Action would you like to Take?");
                                     Console.WriteLine("A:  See All Grades\nB:  Add a Student\nC:  Enter the Student's Info \nD:  Compare two studentes" +
-                                   "\nE:  Show the top Grade\nF:  Show the bottom Grade\nG;  Calculate Avg of the Class\nH:  Remove a Student\nQ:  Back to Main Menu");
+                                   "\nE:  Show the top Grade\nF:  Show the bottom Grade\nG:  Calculate Avg of the Class\nH:  Remove a Student\nQ:  Back to Main Menu");
                                     string action = Console.ReadLine();
                                     
                                     int counter2a = 0;
