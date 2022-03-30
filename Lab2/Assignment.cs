@@ -75,7 +75,7 @@ namespace Lab2
                             tempName3 = Console.ReadLine();
                         }
                     }
-
+                    
                     Console.Write($"What grade did the student recieve on {tempName3}: ");
                     float tempGrade3 = float.Parse(Console.ReadLine());
 
@@ -100,7 +100,7 @@ namespace Lab2
                 }
                 else
                 {
-                    Console.Write("There are no Assigmnets to Edit, press any key to add a Student and Then Edit him/her");
+                    Console.Write("There are no Assigmnets to Edit, press any key to add a Assignment and then Edit the grade");
                     String anyKey = Console.ReadLine();
                     newAssign();
                 }
